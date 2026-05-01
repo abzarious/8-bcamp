@@ -82,7 +82,7 @@ nav {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	background-color: #1E293B;
-	border-bottom: 5px solid #334155;
+	border-bottom: 3px solid orange;
 }
 
 .nav-logo {
@@ -90,7 +90,7 @@ nav {
 	flex-direction: row;
 	align-items: center;
 	padding-left: 20px;
-	color: inherit;
+	color: orange;
 }
 
 .nav-menu {
@@ -100,7 +100,7 @@ nav {
 	align-items: center;
 	gap: 20px;
 	padding-right: 20px;
-	color: inherit;
+	color: orange;
 }
 
 main {
@@ -141,3 +141,62 @@ button {
 	object-position: top;
 	border: 5px solid #1E293B;
 }
+
+.about {
+	width: 100%;
+	box-sizing: border-box;
+	border-top: 3px solid #E2E8F0;
+	border-bottom: 3px solid #E2E8F0;
+	padding: 15px 30px;
+	display: grid;
+	grid-template-areas: " title title title "
+							" A1 A2 A3 "
+							" B1 B2 B3 ";
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 2.3fr 1fr 1fr;
+	grid-gap: 15px;
+}
+
+.about-title {
+	grid-area: title ;
+	border: 3px solid #1E293B;
+}
+
+.bio {
+	height: 35px;
+	background-color: #1E293B; 
+    color: #F8FAFC;          
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+span {
+	color: orange;
+}
+
+.a1 {
+	grid-area: A1;
+}
+
+.a2 {
+	grid-area: A2;
+}
+
+.a3 {
+	grid-area: A3;
+}
+
+.b1 {
+	grid-area: B1;
+}
+
+.b2 {
+	grid-area: B2;
+}
+
+.b3 {
+	grid-area: B3;
+}
+

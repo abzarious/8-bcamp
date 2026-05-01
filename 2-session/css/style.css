@@ -147,7 +147,7 @@ button {
 	box-sizing: border-box;
 	border-top: 3px solid #E2E8F0;
 	border-bottom: 3px solid #E2E8F0;
-	padding: 15px 30px;
+	padding: 30px;
 	display: grid;
 	grid-template-areas: " title title title "
 							" A1 A2 A3 "
@@ -159,7 +159,10 @@ button {
 
 .about-title {
 	grid-area: title ;
-	border: 3px solid #1E293B;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .bio {
@@ -200,3 +203,119 @@ span {
 	grid-area: B3;
 }
 
+.portfolio {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 15px 30px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; /* Penggunaan Gap */
+}
+
+.card {
+    background-color: var(--white);
+    border-radius: 16px;
+    overflow: hidden; /* Memastikan gambar tidak keluar saat zoom */
+    box-shadow: 0 10px 15px -3px var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+}
+
+
+.card-image-wrapper {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Memotong tanpa merusak proporsi */
+    object-position: top;
+    transition: transform 0.5s ease; /* Transisi untuk zoom */
+}
+
+
+.card:hover .card-image-wrapper img {
+    transform: scale(1.15);
+}
+
+.card-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.card-content .category {
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--indigo);
+    letter-spacing: 1px;
+}
+
+.card-content h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.4rem;
+    color: var(--navy);
+}
+
+.card-content p {
+    font-size: 0.95rem;
+    color: #64748b;
+}
+
+/* Tombol Link */
+.card-footer {
+    margin-top: auto;
+    padding: 0 24px 24px;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    background-color: var(--indigo);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #3730a3;
+}
+
+.portfolio-title {
+	grid-area: title ;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+   	padding-bottom: 30px;
+}
+
+footer {
+	width: 100%;
+	height: 50px;
+	color: orange;
+	background-color: #1E293B;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

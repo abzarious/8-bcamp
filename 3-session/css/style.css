@@ -51,6 +51,18 @@ body {
     opacity: 1;
 }
 
+/* Custom Hamburger Icon Color */
+.navbar-toggler {
+    border: 2px solid var(--text-dark) !important;
+    border-radius: 0;
+    padding: 4px 8px;
+}
+
+.navbar-toggler-icon {
+    /* Menggunakan filter agar ikon default Bootstrap menjadi hitam pekat */
+    filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(7500%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+
 /* Tombol CTA Solid Orange */
 .btn-orange {
     background-color: var(--primary-orange);

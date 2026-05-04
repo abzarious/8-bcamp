@@ -1,0 +1,63 @@
+:root {
+           
+    --primary-orange: #f97316; 
+    --primary-orange-hover: #ea580c; 
+    --nav-bg: #ffffff;
+    --text-dark: #0f172a; 
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #ffffff;
+    color: var(--text-dark);
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: var(--nav-bg) !important;
+    border-bottom: 2px solid #e2e8f0; /* Garis tipis transparan agar tetap formal */
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.5px;
+    font-size: 1.6rem;
+    color: var(--text-dark) !important;
+}
+
+.brand-accent {
+    color: var(--primary-orange);
+}
+
+.nav-link {
+    font-weight: 600;
+    color: var(--text-dark) !important;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    opacity: 0.8;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary-orange) !important;
+    opacity: 1;
+}
+
+/* Tombol CTA Solid Orange */
+.btn-orange {
+    background-color: var(--primary-orange);
+    border: none;
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 0px var(--text-dark); /* Efek shadow hitam retro */
+}
+
+.btn-orange:hover {
+    background-color: var(--primary-orange-hover);
+    color: white;
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 0px var(--text-dark);
+}

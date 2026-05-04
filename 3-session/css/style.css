@@ -85,7 +85,7 @@ body {
 }
 
 .hero-name {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 500;
     color: var(--text-dark);
     margin-bottom: 0.5rem;
@@ -97,51 +97,118 @@ body {
     margin-left: 10px;
 }
 
-/* Layout Judul Bertingkat (Desktop) */
 .title-wrapper {
     display: flex;
     flex-direction: column;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .hero-title {
     font-family: 'Inter', sans-serif;
     font-weight: 900;
-    line-height: 0.9;
+    line-height: 0.8;
     text-transform: uppercase;
 }
 
 .title-web {
-    font-size: clamp(3rem, 8vw, 6rem);
+    font-size: clamp(3rem, 7vw, 6rem);
     color: var(--text-dark);
 }
 
 .title-dev {
-    font-size: clamp(3rem, 8vw, 6rem);
-    color: var(--primary-orange);
+    font-size: clamp(3rem, 7vw, 6rem);
+    color: var(--text-dark); 
     align-self: flex-end;
-    margin-top: -10px;
+    margin-top: -5px; 
 }
 
 .hero-description {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     line-height: 1.8;
-    color: #64748b;
-    max-width: 550px;
+    color: var(--text-muted);
+    max-width: 600px;
 }
 
 /* Image Profile */
+.profile-container {
+    width: 380px;
+    height: 380px;
+    margin-left: auto;
+    position: relative;
+}
+
 .img-profile-clean {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border: 2px solid var(--text-dark);
     padding: 10px;
     background-color: white;
     transition: all 0.4s ease;
-    max-width: 380px;
 }
 
-.img-profile-clean:hover {
-    border-color: var(--primary-orange);
-    transform: rotate(2deg);
+/* About Me Section */
+.about-section {
+    padding: 100px 0;
+    background-color: #fafafa;
+}
+
+.section-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.section-subtitle {
+    color: var(--primary-orange);
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-bottom: 60px;
+    display: block;
+}
+
+.info-card {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.info-icon {
+    background-color: var(--text-dark);
+    color: var(--primary-orange);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-right: 20px;
+    transition: 0.3s;
+}
+
+.info-card:hover .info-icon {
+    background-color: var(--primary-orange);
+    color: white;
+    transform: translateY(-5px);
+}
+
+.info-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+    letter-spacing: 1px;
+}
+
+.info-value {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--text-dark);
 }
 
 /* Modal Custom Styling */
@@ -156,20 +223,10 @@ body {
     border-radius: 0;
 }
 
-.list-project-item {
-    border-bottom: 1px solid #eee;
-    padding: 15px 0;
-    transition: all 0.2s;
-}
-
-.list-project-item:hover {
-    padding-left: 10px;
-    color: var(--primary-orange);
-}
-
 @media (max-width: 991px) {
     .hero-section { text-align: center; }
     .title-dev { align-self: center; margin-top: 0; }
     .hero-description { margin: 0 auto 2rem; }
-    .img-profile-clean { margin-top: 3rem; }
+    .profile-container { margin: 3rem auto 0; width: 300px; height: 300px; }
+    .section-title { font-size: 2rem; }
 }

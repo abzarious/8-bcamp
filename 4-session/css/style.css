@@ -72,5 +72,40 @@ section {
 }
 
 
-/*About Section*/
+/*Services Section*/
+.title-wrap {
+	max-width: 700px;
+}
 
+.services-content {
+/*	width: 330px;
+	height: 346px;*/
+	padding: 57px 18px 10px;
+	background-color: #F8F8F8;
+	border-radius: 14px;
+	box-sizing: border-box;
+}
+
+.ui-icon {
+	width: 70px;
+	height: 70px;
+}
+
+.web-icon {
+	width: 72px;
+	height: 82px;
+}
+
+.hp-icon {
+	width: 47px;
+	height: 82px;
+}
+
+.graph-icon {
+	width: 82px;
+	height: 70px;
+}
+
+.services-content p {
+	font-size: 14px;
+}

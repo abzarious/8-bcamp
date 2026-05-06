@@ -115,3 +115,43 @@ section {
 #projects .swiper-slide img {
 	width: 100%;
 }
+
+/*Responsive*/
+@media (max-width: 992px) {
+  #home h1 {
+    font-size: 70px;
+  }
+  .section-title {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  #home {
+    text-align: center;
+  }
+  #home h1 {
+    font-size: 50px;
+  }
+  /* Menambah jarak antara teks dan gambar di mobile */
+  #home .row > div:first-child {
+    margin-bottom: 50px; 
+  }
+  #home img {
+    margin-top: 0;
+  }
+  .section-title {
+    font-size: 32px;
+  }
+  nav img {
+    width: 120px;
+  }
+  /* Mengatur jarak gambar About di mobile */
+  #about .col-md-5 {
+    margin-bottom: 40px;
+  }
+}

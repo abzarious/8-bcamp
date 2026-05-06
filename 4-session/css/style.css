@@ -10,6 +10,10 @@
 	color: var(--primary-orange);
 }
 
+.text-bg-orange {
+	background-color: var(--primary-orange);
+}
+
 .btn-orange {
 	background-color: var(--primary-orange);
 	border-radius: 5px;
@@ -29,6 +33,11 @@
 	font-weight: 600;
 }
 
+.section-title {
+	font-size: 55px;
+	font-weight: 600;
+}
+
 body {
 	color: var(--text-dark);
 	font-family: "Poppins", sans-serif;
@@ -38,10 +47,12 @@ nav img {
 	width: 200px;
 }
 
-#home {
-	margin-top: 100px;
-	margin-bottom: 70px;
+section {
+	margin-top: 80px;
+	margin-bottom: 80px;
 }
+
+/*Hero Section*/
 
 #home h6 {
 	font-size: 24px;
@@ -60,4 +71,6 @@ nav img {
 	width: 500px;
 }
 
+
+/*About Section*/
 

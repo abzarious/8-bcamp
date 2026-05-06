@@ -109,3 +109,9 @@ section {
 .services-content p {
 	font-size: 14px;
 }
+
+
+/*Projects Section*/
+#projects .swiper-slide img {
+	width: 100%;
+}

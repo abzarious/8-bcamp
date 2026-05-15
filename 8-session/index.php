@@ -1,41 +1,78 @@
-<?php  
-$host = "127.0.0.1";
-$dbname = "8bcamp";
-$username = "root";
-$password = "";
+<?php
+require 'config/database.php';
 
+$sql = "SELECT * FROM products ORDER BY id DESC";
 
-try {
-	$pdo = new PDO (
-		"mysql:host=$host;dbname=$dbname;charset=utf8mb4",
-		$username,
-		$password
-	);
+$stmt = $pdo->query($sql);
 
-	$pdo ->setAttribute(
-		PDO::ATTR_ERRMODE,
-		PDO::ERRMODE_EXCEPTION
-	);
-
-	$success = "Alhamdulillah nyambung database";
-
-	echo "<script>alert(" . json_encode($success) . ");</script>";
-} catch (Exception $e) {
-	$err_message = "pedot ki, piye jal : " . $e->getMessage();
-
-    echo "<script>alert(" . json_encode($err_message) . ");</script>";
-}
+$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 ?>
+
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>PHP</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Produk</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body>
-<h1>Connection</h1>
+<body class="bg-light">
+
+    <div class="container py-5">
+        <h2 class="mb-4">Daftar Produk</h2>
+
+        <div class="row g-3 mb-4">
+            <!-- Kolom Cari -->
+            <div class="col-md-6">
+                <input type="text" id="inputCari" class="form-control" placeholder="Cari nama produk...">
+            </div>
+            <!-- Kolom Filter -->
+            <div class="col-md-6">
+                <select id="pilihKategori" class="form-select">
+                    <option value="Semua">Semua Kategori</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Home Living">Home Living</option>
+                    <option value="Apparel">Apparel</option>
+                </select>
+            </div>
+        </div>
+
+        
+        <div class="row row-cols-1 row-cols-md-3 g-4" id="tempatProduk">
+        <?php foreach ($products as $product) : ?>
+        	<div class="col">
+                <div class="card shadow-sm">
+                    <div class="bungkus-gambar">
+                        <img src="img/<?= $product['image'];  ?>" alt="<?= $product['product_name'];  ?>">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $product['product_name'];  ?></h5>
+                        <p class="text-muted small">
+                        	<?php 
+                        		if ( $product['category_id'] == 1) {
+                        			echo "Electronics";
+                        		} else if ($product['category_id'] == 2) {
+                        			echo "Home Living";
+                        		} else {
+                        			echo "Apparel";
+                        		}
+                        	?>
+                        </p>
+                        <p class="card-text"><?= $product['description'];  ?></p>
+                        <h6 class="text-primary">Harga: <?= $product['price'];  ?></h6>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
 </body>
 </html>

@@ -17,9 +17,13 @@ try {
 		PDO::ERRMODE_EXCEPTION
 	);
 
-	echo "nyambung bro";
+	$success = "Alhamdulillah nyambung database";
+
+	echo "<script>alert(" . json_encode($success) . ");</script>";
 } catch (Exception $e) {
-	echo "pedot ki, piye jal : " . $e->getMessage();
+	$err_message = "pedot ki, piye jal : " . $e->getMessage();
+
+    echo "<script>alert(" . json_encode($err_message) . ");</script>";
 }
 
 

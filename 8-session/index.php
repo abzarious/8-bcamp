@@ -1,11 +1,37 @@
 <?php
 require 'config/database.php';
 
-$sql = "SELECT * FROM products ORDER BY id DESC";
+// Filter Category
 
-$stmt = $pdo->query($sql);
+$categorySql = "SELECT * FROM categories";
+$categoryStmt = $pdo->query($categorySql);
+$categories = $categoryStmt->fetchAll(PDO::FETCH_ASSOC);
 
+$categoryId = $_GET['category_id'] ?? '';
+
+$sql = "
+    SELECT *
+    FROM products
+    WHERE 1
+";
+
+$params = [];
+
+if ($categoryId != '') {
+
+    $sql .= " AND category_id = ?";
+
+    $params[] = $categoryId;
+}
+
+
+// Read DB
+
+$sql .= " ORDER BY id DESC";
+$stmt = $pdo->prepare($sql);
+$stmt->execute($params);
 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 
 
 ?>
@@ -34,12 +60,20 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <!-- Kolom Filter -->
             <div class="col-md-6">
-                <select id="pilihKategori" class="form-select">
+              <form method="GET">
+                <select name="category_id" id="pilihKategori" class="form-select">
                     <option value="Semua">Semua Kategori</option>
-                    <option value="Electronics">Electronics</option>
-                    <option value="Home Living">Home Living</option>
-                    <option value="Apparel">Apparel</option>
+                    <?php foreach ($categories as $category): ?>
+			            <option value="<?= $category['id']; ?>" >
+			                <?= $category['name']; ?>
+			            </option>
+
+        			<?php endforeach; ?>
                 </select>
+                <button type="submit">
+			        Filter
+			    </button>
+              </form>
             </div>
         </div>
 

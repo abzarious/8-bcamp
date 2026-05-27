@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,7 +13,7 @@ class ProductController extends Controller
     public function index()
     {
         $title = 'Product Page';
-        $products = ['Macbook', 'Iphone', 'Desk', 'Sweater'];
+        $products = Product::all();
         return view('dashboard.products.index', compact('title', 'products'));
     }
 

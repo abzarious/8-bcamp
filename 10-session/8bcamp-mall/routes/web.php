@@ -1,10 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 
-Route::get('/', function () {
-    return view('dashboard.home');
+Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/dashboard', function () {
+    return view('dashboard.index');
 });
 
 // Route::get('/products', function () {

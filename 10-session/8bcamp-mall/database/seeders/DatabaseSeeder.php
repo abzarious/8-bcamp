@@ -16,17 +16,19 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory(10)->create();
-        Product::factory(10)->create();
-
+       
 
         // User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
 
-        $categories = ['Electronics', 'Fashion', 'Home', 'Toys'];
-        foreach ($categories as $name) {
-            Category::create(['name' => $name]);
-        }
+       $categories = collect(['Electronics', 'Fashion', 'Home', 'Toys']);
+
+        $categories->each(function ($categoryName) {
+            Category::factory()
+                ->hasProducts(5) // Otomatis membuat 5 produk untuk kategori ini
+                ->create(['name' => $categoryName]);
+        });
     }
 }

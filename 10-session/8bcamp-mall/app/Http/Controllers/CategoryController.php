@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
-class ProductController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $products = Product::with('category')->paginate(5);
-        return view('dashboard.products.index', compact('products'));
+        $categories = Category::withCount('products')->get();
+        return view('dashboard.categories.index', compact('categories'));
     }
 
     /**

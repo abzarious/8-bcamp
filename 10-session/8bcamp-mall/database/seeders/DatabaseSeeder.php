@@ -22,13 +22,8 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+       Category::factory(3)->create();
+       Product::factory(20)->create();
 
-       $categories = collect(['Electronics', 'Fashion', 'Home', 'Toys']);
-
-        $categories->each(function ($categoryName) {
-            Category::factory()
-                ->hasProducts(5) // Otomatis membuat 5 produk untuk kategori ini
-                ->create(['name' => $categoryName]);
-        });
     }
 }

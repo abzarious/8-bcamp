@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
@@ -17,13 +18,17 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
+        $name = fake()->words(3, true);
         return [
-
-            'category_id' => Category::factory(),
-            'name' => fake()->sentence(3),
+            
+            'name' => ucfirst($name),
+            'slug' => Str::slug($name), 
             'description' => fake()->paragraph(),
-            'stock' => fake()->numberBetween(1,100),
+            'price' => fake()->numberBetween(50000, 500000),
+            'stock' => fake()->numberBetween(1, 100),
             'image' => 'product.webp',
+
+            'category_id' => Category::inRandomOrder()->first()->id ?? Category::factory(),
         ];
     }
 }

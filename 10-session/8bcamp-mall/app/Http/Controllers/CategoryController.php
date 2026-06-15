@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -28,8 +29,20 @@ class CategoryController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
+    {        
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255|unique:categories,name',
+        ], [
+            'name.required' => 'Nama kategori tidak boleh kosong!',
+            'name.unique'   => 'Nama kategori tersebut sudah ada.',
+        ]);
+        
+        $validatedData['slug'] = Str::slug($request->name);
+
+        Category::create($validatedData);
+
+        return redirect()->route('dashboard.categories.index')
+                         ->with('success', 'Kategori baru sukses ditambahkan!');
     }
 
     /**

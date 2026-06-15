@@ -18,8 +18,8 @@
                                 <p class="text-orange-100 text-sm mt-1">Masukkan informasi detail produk untuk ditambahkan ke Hachi Mall.</p>
                             </div>
 
-                            <form action="" method="POST" enctype="multipart/form-data" class="p-6 sm:p-10 space-y-6">
-                                
+                            <form action="{{ route('dashboard.products.store') }}" method="POST" enctype="multipart/form-data" class="p-6 sm:p-10 space-y-6">
+                                @csrf
 
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                     <div class="sm:col-span-2">
@@ -33,15 +33,15 @@
                                     </div>
 
                                     <div class="sm:col-span-2">
-                                        <label for="category" class="block text-sm font-medium text-gray-700 mb-1">Kategori <span class="text-red-500">*</span></label>
-                                        <select name="category" id="category" 
-                                            class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors bg-white @error('category') border-red-500 focus:ring-red-500/20 focus:border-red-500 @enderror">
+                                        <label for="category_id" class="block text-sm font-medium text-gray-700 mb-1">Kategori <span class="text-red-500">*</span></label>
+                                        <select name="category_id" id="category_id" 
+                                            class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-colors bg-white @error('category_id') border-red-500 focus:ring-red-500/20 focus:border-red-500 @enderror">
                                             <option value="" disabled selected>Pilih Kategori</option>
                                             @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}" {{ old('category') == $category->name ? 'selected' : '' }}>{{ $category->name }}</option>    
+                                                <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>    
                                             @endforeach
                                         </select>
-                                        @error('category')
+                                        @error('category_id')
                                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                         @enderror
                                     </div>
@@ -131,4 +131,3 @@
     @vite('resources/js/product.js')
 @endpush
 </x-app-layout>
-

@@ -16,7 +16,8 @@
                             <p class="text-orange-100 text-xs mt-1">Klasifikasikan etalase produk toko Anda dengan kategori baru.</p>
                         </div>
 
-                        <form action="" method="POST" class="p-6 space-y-4">
+                        <form action="{{ route('dashboard.categories.store') }}" method="POST" class="p-6 space-y-4">
+                            @csrf 
                             
                             <div>
                                 <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama Kategori <span class="text-red-500">*</span></label>

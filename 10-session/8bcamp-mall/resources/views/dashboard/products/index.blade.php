@@ -75,11 +75,15 @@
                                                         <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
                                                     </svg>
                                                 </a>
-                                                <button title="Delete" class="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition duration-150" onclick="return confirm('Apakah Anda yakin ingin menghapus produk ini?')">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9 9m1.771-5.316A2.225 2.225 0 0 0 14.74 3H9.26a2.225 2.225 0 0 0-1.722 1.282L7.3 5.63m8.904 0a2.225 2.225 0 0 1-2.24 2.24H7.74a2.225 2.225 0 0 1-2.24-2.24m11.168 0H16.3" />
-                                                    </svg>
-                                                </button>
+                                                <form action="{{ route('dashboard.products.destroy', $product->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus produk ini?')" class="inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" title="Delete" class="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition duration-150">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9 9m1.771-5.316A2.225 2.225 0 0 0 14.74 3H9.26a2.225 2.225 0 0 0-1.722 1.282L7.3 5.63m8.904 0a2.225 2.225 0 0 1-2.24 2.24H7.74a2.225 2.225 0 0 1-2.24-2.24m11.168 0H16.3" />
+                                                        </svg>
+                                                    </button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>

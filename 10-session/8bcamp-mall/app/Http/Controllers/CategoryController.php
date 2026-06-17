@@ -33,16 +33,17 @@ class CategoryController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255|unique:categories,name',
         ], [
-            'name.required' => 'Nama kategori tidak boleh kosong!',
-            'name.unique'   => 'Nama kategori tersebut sudah ada.',
+            'name.required' => 'Nama kategori wajib diisi!',
+            'name.unique'   => 'Kategori dengan nama tersebut sudah terdaftar.',
         ]);
-        
+
+    
         $validatedData['slug'] = Str::slug($request->name);
 
         Category::create($validatedData);
 
         return redirect()->route('dashboard.categories.index')
-                         ->with('success', 'Kategori baru sukses ditambahkan!');
+                         ->with('success', 'Kategori baru berhasil ditambahkan!');
     }
 
     /**
@@ -56,24 +57,37 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Category $category)
     {
-        //
+        return view('dashboard.categories.edit', compact('category'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        // 🔒 KEAMANAN: Abaikan validasi unique untuk ID kategori ini sendiri saat update
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255|unique:categories,name,' . $category->id,
+        ], [
+            'name.required' => 'Nama kategori tidak boleh kosong!',
+            'name.unique'   => 'Nama kategori tersebut sudah digunakan.',
+        ]);
+
+        // Otomatisasi pembaruan slug baru berbasis nama
+        $validatedData['slug'] = Str::slug($request->name);
+
+        // Update data di database
+        $category->update($validatedData);
+
+        return redirect()->route('dashboard.categories.index')
+                        ->with('success', 'Kategori berhasil diperbarui!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        //
+        // Hubungkan penghapusan atau proteksi jika kategori masih memiliki produk (opsional)
+        $category->delete();
+
+        return redirect()->route('dashboard.categories.index')
+                        ->with('success', 'Kategori berhasil dihapus!');
     }
 }

@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Product;
+use App\Models\Category; // Sesuaikan jika nama model Anda ProductCategory
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $totals_data = [
             [
                 'name' => 'Product',
@@ -78,6 +82,19 @@ class DashboardController extends Controller
             ],
         ];
 
-        return view('dashboard', compact('totals_data', 'weekly_order_data'));
+        // 1. Menghitung Jumlah Semua Produk
+        $jumlahProduk = Product::count();
+
+        // 2. Menghitung Jumlah Total Klik dari Seluruh Produk
+        $jumlahKlikProduk = Product::sum('click');
+
+        // 3. Menghitung Jumlah Kategori Produk
+        $jumlahKategori = Category::count();
+
+        // 4. Menghitung Jumlah User
+        $jumlahUser = User::count();
+
+        // Mengirimkan data statistik ke view halaman dashboard admin
+        return view('dashboard', compact('jumlahUser','jumlahProduk', 'jumlahKlikProduk', 'jumlahKategori', 'totals_data', 'weekly_order_data'));
     }
 }

@@ -14,7 +14,24 @@
                             
                             <div>
                                 <h3 class="text-sm font-medium text-gray-700 uppercase tracking-wider">{{ $total['name'] }}</h3>
-                                <h2 class="text-3xl font-bold text-gray-900 mt-1">{{ $total['total'] }}</h2>
+                                <h2 class="text-3xl font-bold text-gray-900 mt-1">
+                                    @switch($total['name'])
+                                        @case('User')
+                                            {{ $jumlahUser }}
+                                            @break
+                                        @case('Product')
+                                            {{ $jumlahProduk }}
+                                            @break
+                                        @case('Product Category')
+                                            {{ $jumlahKategori }}
+                                            @break
+                                        @case('Product Clicks')
+                                            {{ $jumlahKlikProduk }}
+                                            @break
+                                        @default
+                                            {{ $total['total'] }}
+                                    @endswitch
+                                </h2>
                             </div>
 
                             <div class="text-4xl text-gray-800 opacity-70">
